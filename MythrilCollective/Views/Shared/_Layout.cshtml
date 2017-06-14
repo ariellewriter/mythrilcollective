@@ -1,49 +1,67 @@
-﻿<!DOCTYPE html>
+﻿<!--A Design by W3layouts
+Author: W3layout
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+
+<!DOCTYPE html>
 <html>
     <head>
-        <title>@ViewBag.Title - My Telerik MVC Application</title>
-        <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
-    	<link href="https://kendo.cdn.telerik.com/2016.3.1118/styles/kendo.common.min.css" rel="stylesheet" type="text/css" />
-	<link href="https://kendo.cdn.telerik.com/2016.3.1118/styles/kendo.mobile.all.min.css" rel="stylesheet" type="text/css" />
-	<link href="https://kendo.cdn.telerik.com/2016.3.1118/styles/kendo.dataviz.min.css" rel="stylesheet" type="text/css" />
-	<link href="https://kendo.cdn.telerik.com/2016.3.1118/styles/kendo.default.min.css" rel="stylesheet" type="text/css" />
-	<link href="https://kendo.cdn.telerik.com/2016.3.1118/styles/kendo.dataviz.default.min.css" rel="stylesheet" type="text/css" />
-	<script src="https://kendo.cdn.telerik.com/2016.3.1118/js/jquery.min.js"></script>
-	<script src="https://kendo.cdn.telerik.com/2016.3.1118/js/jszip.min.js"></script>
-	<script src="https://kendo.cdn.telerik.com/2016.3.1118/js/kendo.all.min.js"></script>
-	<script src="https://kendo.cdn.telerik.com/2016.3.1118/js/kendo.aspnetmvc.min.js"></script>
+        <title>@ViewBag.Title - Mythril Collective</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        
+        <link href="@Url.Content("~/Content/style.css")" rel="stylesheet" media="all" type="text/css" />
+    	<link href="@Url.Content("~/Content/kendo/2016.3.1118/kendo.common-material.min.css")" rel="stylesheet" type="text/css" />
+	<link href="@Url.Content("~/Content/kendo/2016.3.1118/kendo.mobile.all.min.css")" rel="stylesheet" type="text/css" />
+	<link href="@Url.Content("~/Content/kendo/2016.3.1118/kendo.dataviz.min.css")" rel="stylesheet" type="text/css" />
+	<link href="@Url.Content("~/Content/kendo/2016.3.1118/kendo.materialblack.min.css")" rel="stylesheet" type="text/css" />
+	<link href="@Url.Content("~/Content/kendo/2016.3.1118/kendo.dataviz.materialblack.min.css")" rel="stylesheet" type="text/css" />
+	<script src="@Url.Content("~/Scripts/kendo/2016.3.1118/jquery.min.js")"></script>
+	<script src="@Url.Content("~/Scripts/kendo/2016.3.1118/jszip.min.js")"></script>
+	<script src="@Url.Content("~/Scripts/kendo/2016.3.1118/kendo.all.min.js")"></script>
+	<script src="@Url.Content("~/Scripts/kendo/2016.3.1118/kendo.aspnetmvc.min.js")"></script>
 	<script src="@Url.Content("~/Scripts/kendo.modernizr.custom.js")"></script>
+
 </head>
     <body>
-        <header>
-            <div class="content-wrapper">
-                <div class="float-left">
-                    <p class="site-title">@Html.ActionLink("your logo here", "Index", "Home")</p>
+        <div class="wrap">
+            <div class="header">
+                <div class="logo title"><a href="/"><img src="/Images/mythrillogo1.png" title="Mythril Collective" alt="Mythril Collective" width="60" height="60" border="0" />Mythril Collective</a></div>
+                <div class="nav">
+                    <ul>
+                        @Html.Partial("_MainMenu")
+                    </ul>
                 </div>
-                <div class="float-right">
-                    <nav>
-                        <ul id="menu">
-                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                            <li>@Html.ActionLink("About", "About", "Home")</li>
-                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                        </ul>
-                    </nav>
+                        <div class="clear"></div>
                 </div>
-            </div>
-        </header>
-        <div id="body">
-            @RenderSection("featured", required: false)
-            <section class="content-wrapper main-content clear-fix">
-                @RenderBody()
-            </section>
-        </div>
+                <div id="body">
+                    @if (IsSectionDefined("featured"))
+                    {
+                        <section class="featured">
+                            @RenderSection("featured", required: false)
+                        </section>
+                    }
 
-        <footer>
-            <div class="content-wrapper">
-                <div class="float-left">
-                    <p>&copy; @DateTime.Now.Year - My Telerik MVC Application</p>
+                    @if (IsSectionDefined("leftcol"))
+                    {
+                        <section class="left-column">
+                            @RenderSection("leftcol", required: false)
+                        </section>
+                    }
+
+                    <section class="main-content">
+                        @RenderBody()
+                    </section>
+                    @if (IsSectionDefined("rightcol"))
+                    {
+                        <section class="right-column">
+                            @RenderSection("rightcol", required: false)
+                        </section>
+                    }
                 </div>
             </div>
-        </footer>
+        @Html.Partial("_Footer")
+        
     </body>
 </html>

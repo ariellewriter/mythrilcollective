@@ -2,45 +2,16 @@
     ViewBag.Title = "About";
 }
 
-<hgroup class="title">
-    <h1>@ViewBag.Title.</h1>
-    <h2>@ViewBag.Message</h2>
-</hgroup>
+@section featured {
+[Image Goes Here, Maybe a beautiful landscape from ffxiv]
+}
 
-<article>
-    <p>
-        Use this area to provide additional information.
-    </p>
 
-    <p>
-        Use this area to provide additional information.
-    </p>
+@section rightcol {
+    <h2>Right Column</h2>
+    <p>Will probably put like discord information or maybe calendar feed here</p>
+}
 
-    <p>
-        Use this area to provide additional information.
-    </p>
-</article>
-
-<aside>
-    <h3>Telerik UI for ASP.NET MVC TreeView</h3>
-    <p>
-        Use this area to provide additional information.
-    </p>
-
-    @(Html.Kendo().TreeView()
-        .Name("LinksTreeView")
-        .Items(items =>
-        {
-            items.Add()
-                .Text("Home")
-                .Action("Index", "Home");
-            items.Add()
-                .Text("About")
-                .Action("About", "Home");
-            items.Add()
-                .Text("Contact")
-                .Action("Contact", "Home");
-        })
-    )
-
-</aside>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris congue, dui ut hendrerit volutpat, justo lacus auctor risus, ac bibendum elit ligula vitae urna. Aliquam condimentum maximus lorem at semper. Mauris euismod est id mi euismod, vel pretium risus molestie. Nam in pretium urna, tempor mattis felis. Donec at consequat eros. Duis ac rhoncus urna. In hac habitasse platea dictumst. Suspendisse sit amet enim vitae lorem tempus hendrerit. Donec nec dignissim nibh, gravida facilisis neque.
+    </p><p>
+Curabitur ac nunc eu elit lobortis laoreet eget a augue. Nulla magna lorem, tincidunt ac semper ac, mollis vel urna. Fusce elementum pulvinar euismod. Ut venenatis eros a auctor scelerisque. Cras turpis arcu, accumsan vitae risus ut, malesuada gravida tellus. Sed ultrices consequat nulla, et porttitor lorem fringilla et. Suspendisse at elit euismod, lacinia eros sit amet, rhoncus magna. Morbi dapibus pulvinar arcu eget ultricies.</p>
