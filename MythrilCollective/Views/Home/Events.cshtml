@@ -2,19 +2,23 @@
 @{
     ViewBag.Title = "Events";
 }
-
-<h1>Events</h1>
-<iframe src="https://calendar.google.com/calendar/embed?src=bgc3dgecpg7ifbva712j3o93l8%40group.calendar.google.com&ctz=America/New_York" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
-
+<style type="text/css">
+    #body .right-column
+    {
+        width:224px;
+    }
+    
+</style>
+<div class="content">
+    <h1>Events</h1>
+    <iframe src="https://calendar.google.com/calendar/embed?src=bgc3dgecpg7ifbva712j3o93l8%40group.calendar.google.com&ctz=America/New_York" style="border: 0" width="780" height="600" frameborder="0" scrolling="no"></iframe>
+    
+</div>
 @section rightcol {
     <div class="content">
-    <h2>Legend</h2>
-    <ul>
-        <li>Color</li>
-        <li>Color</li>
-    </ul>
-    <hr />
-    <h2>Add Event</h2>
-    [Add Event Form]
+   @Html.Partial("_EventLegend")
+       
+        <hr />
+        @Html.ActionLink("Add Event", "AddEvent", null, new { type = "button", @class = "k-primary", style = "width: 100%" })
 </div>
 }

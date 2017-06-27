@@ -1,0 +1,100 @@
+﻿@model MythrilCollective.Models.Event
+<div class="content-form">
+    @if(!string.IsNullOrEmpty(ViewBag.Message))
+    { 
+        <div class="message-error">@ViewBag.Message</div>
+    }
+    @using (Html.BeginForm("AddEvent", "Home", FormMethod.Post))
+    { 
+    <div class="form-control">
+        @Html.Label("eventname", "Title")
+        @Html.TextBoxFor(m => m.Title, new {name = "eventname", @class = "k-textbox", style = "width: 100%" })
+    </div>
+    <div class="form-control">
+        @Html.Label("start", "Start")
+        @(Html.Kendo().DateTimePickerFor(m => m.Start)
+        .Value(DateTime.Now)
+        .HtmlAttributes(new { style = "width: 100%" })
+        )
+    </div>
+    <div class="form-control">
+        @Html.Label("duration", "Duration")
+        @(Html.Kendo().NumericTextBoxFor<double>(m => m.Duration)
+            .Format("##.# hrs")
+            .Min(0)
+            .Max(24)
+            .Step(0.5)
+            .Value(1.0)
+                    .HtmlAttributes(new { style = "width: 100%" })
+        )
+        <span class="instruction">0 for all day events</span>
+    </div>
+    <div class="form-control">
+        @Html.Label("type", "Event Type")
+        @(Html.Kendo().DropDownListFor(m => m.ColorCode)
+          .DataTextField("Text")
+          .DataValueField("Value")
+          .BindTo(new List<SelectListItem>() {
+              new SelectListItem() {
+                  Text = "None",
+                  Value = ""
+              },
+              new SelectListItem() {
+                  Text = "Server/Public Events",
+                  Value = "9"
+              },
+              new SelectListItem() {
+                  Text = "Non-FC Events",
+                  Value = "7"
+              },
+              new SelectListItem() {
+                  Text = "FC RP Events",
+                  Value = "10"
+              },
+              new SelectListItem() {
+                  Text = "FC OOC Events",
+                  Value = "10"
+              },
+              new SelectListItem() {
+                  Text = "FC PvE Events",
+                  Value = "4"
+              },
+              new SelectListItem() {
+                  Text = "Member Events",
+                  Value = "3"
+              },
+              new SelectListItem() {
+                  Text = "Other Events",
+                  Value = "8"
+              }
+          })
+          .Value("")
+                  .HtmlAttributes(new { style = "width: 100%" })
+        )
+    </div>
+    <div class="form-control">
+        @Html.Label("description", "Details")
+        @Html.TextAreaFor(m => m.Description, new { @class = "k-textbox", style = "width: 100%" })
+        
+    </div>
+    <div class="form-control">
+        @Html.Label("code", "Location")
+        @(Html.Kendo().TextBoxFor(m => m.Location)
+                    .HtmlAttributes(new { style = "width: 100%" })
+        )
+    </div>
+    <div class="form-control">
+        @Html.Label("code", "Officer Code")
+        @(Html.Kendo().TextBoxFor(m => m.OfficerCode)
+            .HtmlAttributes(new { style = "width: 100%" })
+        )
+    </div>
+    @(Html.Kendo().Button()
+        .Name("addevent")
+        
+                .HtmlAttributes(new { type = "submit", @class = "k-primary", style = "width: 100%" })
+        .Content("Add Event"))
+
+    }<!-- END FORM -->
+    
+</div>
